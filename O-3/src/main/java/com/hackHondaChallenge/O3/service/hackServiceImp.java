@@ -16,7 +16,7 @@ public class hackServiceImp implements hackService {
         return new ListNode[0];
     }
     @Override
-    public ListNode[] sortSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
+    public ListNode[] getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
         ListNode route = new ListNode();
         ListNode[] solution = new ListNode[routes.length];
 
@@ -25,7 +25,7 @@ public class hackServiceImp implements hackService {
             route = routes[i];
 
             while(route != null){
-                if(route.transp.equals("Drive") && canDrive){
+                if(route.transp.equals("drive") && canDrive){
                     route.importance ++;
                 }
                 if(routes[i].transp.equals("walk") && canWalk){
