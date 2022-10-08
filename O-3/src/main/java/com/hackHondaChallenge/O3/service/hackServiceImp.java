@@ -1,10 +1,10 @@
 package com.hackHondaChallenge.O3.service;
+
+import com.fasterxml.jackson.databind.util.LinkedNode;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+
 
 @Service
 public class hackServiceImp implements hackService {
@@ -14,21 +14,35 @@ public class hackServiceImp implements hackService {
         return i;
     }
     @Override
-    public LinkedList[] allRoute(String start, String end){
+    public ListNode[] allRoute(String start, String end){
 
+        return new ListNode[0];
     }
     @Override
-    public LinkedList[] sort(LinkedList[] routes){
-        LinkedList[] solution = new LinkedList[routes.length];
+    public void sortSolution(&ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
+        ListNode route = new ListNode();
 
 
+        for(int i = 0; i < routes.length; i++){
+            route = routes[i];
 
-        return solution;
+            while(route != null){
+                if(route.transp.equals("Drive") && canDrive){
+                    route.importance ++;
+                }
+                if(routes[i].transp.equals("walk") && canWalk){
+                    routes[i].importance ++;
+                }
+                route = route.next;
+            }
+        }
+
+        sort(routes, 0, routes.length - 1);
     }
     @Override
-    public void sort(LinkedList[] arr, int from_Index, int to_Index){
+    public void sort(ListNode[] arr, int from_Index, int to_Index){
         int[] importance = new int[arr.length];
-        LinkedList temp = new LinkedList();
+        ListNode temp = new ListNode();
 
         for(int i = 0; i < arr.length; i++){
             while(arr[i] != null){
@@ -37,7 +51,11 @@ public class hackServiceImp implements hackService {
             }
         }
         for(int i = 0; i < importance.length; i++){
-            if()
+            if(importance[i] < importance[i + 1]){
+                temp = arr[i];
+                arr[i] = arr[i + 1];
+                arr[i + 1] = temp;
+            }
         }
     }
 
