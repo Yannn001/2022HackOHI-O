@@ -1,9 +1,6 @@
 package com.hackHondaChallenge.O3.service;
 
-import com.fasterxml.jackson.databind.util.LinkedNode;
 import org.springframework.stereotype.Service;
-
-import java.util.LinkedList;
 
 
 @Service
@@ -19,8 +16,9 @@ public class hackServiceImp implements hackService {
         return new ListNode[0];
     }
     @Override
-    public void sortSolution(&ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
+    public ListNode[] sortSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
         ListNode route = new ListNode();
+        ListNode[] solution = new ListNode[routes.length];
 
 
         for(int i = 0; i < routes.length; i++){
@@ -37,26 +35,35 @@ public class hackServiceImp implements hackService {
             }
         }
 
-        sort(routes, 0, routes.length - 1);
+        solution = sort(routes, 0, routes.length);
+        return solution;
     }
     @Override
-    public void sort(ListNode[] arr, int from_Index, int to_Index){
+    public ListNode[] sort(ListNode[] arr, int from_Index, int to_Index){
         int[] importance = new int[arr.length];
         ListNode temp = new ListNode();
+        ListNode[] sorted = new ListNode[arr.length];
+
+        for(int i = 0; i < arr.length; i++){
+            sorted[i] = arr[i];
+        }
 
         for(int i = 0; i < arr.length; i++){
             while(arr[i] != null){
-                importance[i] += arr[i].importance;
-                arr[i] = arr[i].next;
+                importance[i] += sorted[i].importance;
+                arr[i] = sorted[i].next;
             }
         }
         for(int i = 0; i < importance.length; i++){
-            if(importance[i] < importance[i + 1]){
-                temp = arr[i];
-                arr[i] = arr[i + 1];
-                arr[i + 1] = temp;
+            for (int j = 0; j < importance.length - i - 1; j++){
+                if(importance[j] < importance[j + 1]){
+                    temp = sorted[j];
+                    sorted[j] = sorted[j + 1];
+                    sorted[j + 1] = temp;
+                }
             }
         }
+        return sorted;
     }
 
 }
