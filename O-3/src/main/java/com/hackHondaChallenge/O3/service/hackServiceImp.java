@@ -95,12 +95,10 @@ public class hackServiceImp implements hackService {
         }
         for(int i = 0; i < importance.length; i++){
             for (int j = 0; j < importance.length - i - 1; j++){
-                subsort1 = sorted[j];
-                subsort2 = sorted[j + 1];
                 if(importance[j] < importance[j + 1]){
-                    temp = subsort1;
-                    subsort1 = subsort2;
-                    subsort2 = temp;
+                    temp = sorted[j];
+                    sorted[j] = sorted[j + 1];
+                    sorted[j] = temp;
                 }
             }
         }
