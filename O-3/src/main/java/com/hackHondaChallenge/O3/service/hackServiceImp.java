@@ -18,19 +18,20 @@ public class hackServiceImp implements hackService {
     public ListNode[] allRoute(String start, String end){
 
         ListNode[] route = new ListNode[3];
-        if (start.equals("OhioUnion") && end.equals("RPAC")){
+        if (start.equals("OhioUnion") && end.equals("RPAC")) {
             route = new ListNode[3];
             route[0] = new ListNode("drive", 3, 2);
             route[1] = new ListNode("walk", 10, 0);
             route[2] = new ListNode("walk", 11, 0);
-        } else if (start.equals("Ohio Union") && end.equals("Dreese Lab")) {
-            route = new ListNode[2];
-            route[0] = new ListNode("walk", 11, 0);
-            ListNode route_node = new ListNode("CABS", 5, 0);
-            route_node.next = new ListNode("walk", 11, 0);
-            route[1] = route_node;
-        } else if (start.equals("99P Labs") && end.equals("Dreese Lab")){
+        } else if (start.equals("OhioUnion") && end.equals("DreeseLab")) {
             route = new ListNode[3];
+            route[0] = new ListNode("drive", 4, 0);
+            route[1] = new ListNode("walk", 11, 0);
+            ListNode route_node = new ListNode("walk", 11, 0);
+            route_node.next = new ListNode("CABS", 5, 0);
+            route[2] = route_node;
+        } else if (start.equals("99PLabs") && end.equals("DreeseLab")) {
+            route = new ListNode[4];
             route[0] = new ListNode("walk", 31, 0);
             ListNode route_node_1 = new ListNode("COTA", 11, 2.5);
             route_node_1.next = new ListNode("walk", 10, 0);
@@ -38,8 +39,9 @@ public class hackServiceImp implements hackService {
             ListNode route_node_2 = new ListNode("CABS", 5, 0);
             route_node_2.next = new ListNode("walk", 3, 0);
             route[2] = route_node_2;
-        } else if (start.equals("99P Labs") && end.equals("RPAC")) {
-            route = new ListNode[3];
+            route[3] = new ListNode("drive", 9, 0);
+        } else if (start.equals("99PLabs") && end.equals("RPAC")) {
+            route = new ListNode[4];
             route[0] = new ListNode("walk", 31, 0);
             ListNode route_node_1 = new ListNode("COTA", 11, 2.5);
             route_node_1.next = new ListNode("walk", 10, 0);
@@ -47,6 +49,7 @@ public class hackServiceImp implements hackService {
             ListNode route_node_2 = new ListNode("CABS", 17, 0);
             route_node_2.next = new ListNode("walk", 6, 0);
             route[2] = route_node_2;
+            route[3] = new ListNode("drive", 8, 0);
         }
 
         return route;
@@ -83,6 +86,7 @@ public class hackServiceImp implements hackService {
     public ListNode[] sort(ListNode[] arr, int from_Index, int to_Index){
         int[] importance = new int[arr.length];
         ListNode temp;
+        int temp_1;
         ListNode[] sorted = new ListNode[arr.length];
         ListNode subsort1 = new ListNode();
         ListNode subsort2 = new ListNode();
@@ -99,18 +103,19 @@ public class hackServiceImp implements hackService {
                 subsort1 = subsort1.next;
             }
         }
-        System.out.println(importance[3]);
 
         for (int i = 0; i < importance.length-1; i++) {
             for (int j = 0; j < importance.length-i-1; j++) {
-                if (importance[j] > importance[j + 1]) {
+                if (importance[j] < importance[j + 1]) {
                     temp = sorted[j];
+                    temp_1 = importance[j];
                     sorted[j] = sorted[j + 1];
+                    importance[j] = importance[j+1];
                     sorted[j+1] = temp;
+                    importance[j+1]=temp_1;
                 }
             }
         }
-        System.out.println(sorted[0].transp);
         return sorted;
     }
     @Override
