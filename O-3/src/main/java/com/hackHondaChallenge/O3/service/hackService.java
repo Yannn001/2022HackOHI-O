@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 public interface hackService {
     public Integer compute(Integer i);
     public ListNode[] allRoute(String start, String end);
-    public ListNode[] getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent);
+    public String getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent);
     public ListNode[] sort(ListNode[] arr, int from_Index, int to_Index);
+    public String jsonfy(ListNode[] arr);
 }

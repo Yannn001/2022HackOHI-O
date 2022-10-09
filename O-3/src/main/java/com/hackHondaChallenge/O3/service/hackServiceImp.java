@@ -1,5 +1,6 @@
 package com.hackHondaChallenge.O3.service;
 
+import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
 
@@ -48,7 +49,7 @@ public class hackServiceImp implements hackService {
         return route;
     }
     @Override
-    public ListNode[] getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
+    public String getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
         ListNode route = new ListNode();
         ListNode[] solution = new ListNode[routes.length];
 
@@ -68,7 +69,7 @@ public class hackServiceImp implements hackService {
         }
 
         solution = sort(routes, 0, routes.length);
-        return solution;
+        return jsonfy(solution);
     }
     @Override
     public ListNode[] sort(ListNode[] arr, int from_Index, int to_Index){
@@ -97,6 +98,13 @@ public class hackServiceImp implements hackService {
         }
         return sorted;
     }
-    // test
-
+    @Override
+    public String jsonfy(ListNode[] arr){
+        Gson json= new Gson();
+        String response = "";
+        for(int i =0; i < arr.length; i++){
+            response +=json.toJson(arr[i]);
+        }
+        return response;
+    }
 }

@@ -15,10 +15,8 @@ public class MappingController {
     @Autowired
     private hackService studentService;
 
-    @GetMapping("/compute/{id}")
-    public Integer add(@PathVariable Integer id) {
-
-            int a = studentService.compute(id);
-            return a;
+    @GetMapping("/compute/{start}/{end}/{canDrive}/{canWalk}/{isStudent}")
+    public String compute(@PathVariable String start, @PathVariable String end, @PathVariable Boolean canDrive, @PathVariable Boolean canWalk, @PathVariable Boolean isStudent) {
+        return studentService.getSolution(studentService.allRoute(start, end), canDrive, canWalk, isStudent);
     }
 }
