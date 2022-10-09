@@ -49,8 +49,8 @@ public class hackServiceImp implements hackService {
     }
     @Override
     public ListNode[] getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
-        ListNode route = new ListNode();
         ListNode[] solution = new ListNode[routes.length];
+        ListNode route = new ListNode();
 
 
         for(int i = 0; i < routes.length; i++){
@@ -75,28 +75,32 @@ public class hackServiceImp implements hackService {
         int[] importance = new int[arr.length];
         ListNode temp = new ListNode();
         ListNode[] sorted = new ListNode[arr.length];
+        ListNode subsort1 = new ListNode();
+        ListNode subsort2 = new ListNode();
 
         for(int i = 0; i < arr.length; i++){
             sorted[i] = arr[i];
         }
 
-        for(int i = 0; i < arr.length; i++){
-            while(arr[i] != null){
-                importance[i] += sorted[i].importance;
-                arr[i] = sorted[i].next;
+        for(int i = 0; i < sorted.length; i++){
+            subsort1 = sorted[i];
+            while(subsort1 != null){
+                importance[i] += subsort1.importance;
+                subsort1 = subsort1.next;
             }
         }
         for(int i = 0; i < importance.length; i++){
             for (int j = 0; j < importance.length - i - 1; j++){
+                subsort1 = sorted[j];
+                subsort2 = sorted[j + 1];
                 if(importance[j] < importance[j + 1]){
-                    temp = sorted[j];
-                    sorted[j] = sorted[j + 1];
-                    sorted[j + 1] = temp;
+                    temp = subsort1;
+                    subsort1 = subsort2;
+                    subsort2 = temp;
                 }
             }
         }
         return sorted;
     }
-    // test
 
 }
