@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/CPSC_frontend_dev/static/css/main.3506717e.chunk.css",
+    "main.js": "/CPSC_frontend_dev/static/js/main.e50d2adf.chunk.js",
+    "main.js.map": "/CPSC_frontend_dev/static/js/main.e50d2adf.chunk.js.map",
+    "runtime-main.js": "/CPSC_frontend_dev/static/js/runtime-main.a5088e28.js",
+    "runtime-main.js.map": "/CPSC_frontend_dev/static/js/runtime-main.a5088e28.js.map",
+    "static/js/2.74520109.chunk.js": "/CPSC_frontend_dev/static/js/2.74520109.chunk.js",
+    "static/js/2.74520109.chunk.js.map": "/CPSC_frontend_dev/static/js/2.74520109.chunk.js.map",
+    "index.html": "/CPSC_frontend_dev/index.html",
+    "static/css/main.3506717e.chunk.css.map": "/CPSC_frontend_dev/static/css/main.3506717e.chunk.css.map",
+    "static/js/2.74520109.chunk.js.LICENSE.txt": "/CPSC_frontend_dev/static/js/2.74520109.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a5088e28.js",
+    "static/js/2.74520109.chunk.js",
+    "static/css/main.3506717e.chunk.css",
+    "static/js/main.e50d2adf.chunk.js"
+  ]
+}
