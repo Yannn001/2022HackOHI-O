@@ -20,6 +20,5 @@ public class MappingController {
 
             int a = studentService.compute(id);
             return a;
-
     }
 }
