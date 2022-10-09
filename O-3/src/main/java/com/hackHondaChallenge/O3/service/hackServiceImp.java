@@ -51,10 +51,14 @@ public class hackServiceImp implements hackService {
     public ListNode[] getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
         ListNode[] solution = new ListNode[routes.length];
         ListNode route = new ListNode();
-
+        ListNode[] copy = new ListNode[routes.length];
 
         for(int i = 0; i < routes.length; i++){
-            route = routes[i];
+            copy[i] = routes[i];
+        }
+
+        for(int i = 0; i < routes.length; i++){
+            route = copy[i];
 
             while(route != null){
                 if(route.transp.equals("drive") && canDrive){
@@ -67,7 +71,7 @@ public class hackServiceImp implements hackService {
             }
         }
 
-        solution = sort(routes, 0, routes.length);
+        solution = sort(copy, 0, routes.length);
         return solution;
     }
     @Override
