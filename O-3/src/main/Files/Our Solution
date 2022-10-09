@@ -1,0 +1,6 @@
+Our Solution
+We import google map to help us determine all routes form the start location to the goal position.
+Then, we will use our own algorithm to sort those routes based on the spending time, cost, and users' personal habit.
+In our sorting algorithm, we build a linked list to store each separate route, and use an array to store all routes.
+When user enter their start position, goal location, and their travelling habits, our website will list all the routes based on optimal dependence.
+Besides, we also consider that for disabled people, we need to realized some transportations is not convenient and thus, in our solution, we add the "can drive" as one important property which will affect our solution.

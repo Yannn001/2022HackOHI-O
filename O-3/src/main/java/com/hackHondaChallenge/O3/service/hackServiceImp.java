@@ -28,8 +28,8 @@ public class hackServiceImp implements hackService {
                 if(route.transp.equals("drive") && canDrive){
                     route.importance ++;
                 }
-                if(routes[i].transp.equals("walk") && canWalk){
-                    routes[i].importance ++;
+                if(route.transp.equals("walk") && canWalk){
+                    route.importance ++;
                 }
                 route = route.next;
             }
