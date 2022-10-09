@@ -3,6 +3,9 @@ package com.hackHondaChallenge.O3.service;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Service
 public class hackServiceImp implements hackService {
@@ -15,7 +18,7 @@ public class hackServiceImp implements hackService {
     public ListNode[] allRoute(String start, String end){
 
         ListNode[] route = new ListNode[3];
-        if (start.equals("Ohio Union") && end.equals("RPAC")){
+        if (start.equals("OhioUnion") && end.equals("RPAC")){
             route = new ListNode[3];
             route[0] = new ListNode("drive", 3, 2);
             route[1] = new ListNode("walk", 10, 0);
@@ -52,10 +55,15 @@ public class hackServiceImp implements hackService {
     public String getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
         ListNode route = new ListNode();
         ListNode[] solution = new ListNode[routes.length];
+        ListNode[] copy = new ListNode[routes.length];
 
 
         for(int i = 0; i < routes.length; i++){
-            route = routes[i];
+            copy[i] = routes[i];
+        }
+
+        for(int i = 0; i < routes.length; i++){
+            route = copy[i];
 
             while(route != null){
                 if(route.transp.equals("drive") && canDrive){
@@ -74,28 +82,35 @@ public class hackServiceImp implements hackService {
     @Override
     public ListNode[] sort(ListNode[] arr, int from_Index, int to_Index){
         int[] importance = new int[arr.length];
-        ListNode temp = new ListNode();
+        ListNode temp;
         ListNode[] sorted = new ListNode[arr.length];
+        ListNode subsort1 = new ListNode();
+        ListNode subsort2 = new ListNode();
+        Map<ListNode, Integer> sortMap = new HashMap<>();
 
-        for(int i = 0; i < arr.length; i++){
+        for (int i = 0; i < arr.length; i++) {
             sorted[i] = arr[i];
         }
 
-        for(int i = 0; i < arr.length; i++){
-            while(arr[i] != null){
-                importance[i] += sorted[i].importance;
-                arr[i] = sorted[i].next;
+        for (int i = 0; i < sorted.length; i++) {
+            subsort1 = sorted[i];
+            while (subsort1 != null) {
+                importance[i] += subsort1.importance;
+                subsort1 = subsort1.next;
             }
         }
-        for(int i = 0; i < importance.length; i++){
-            for (int j = 0; j < importance.length - i - 1; j++){
-                if(importance[j] < importance[j + 1]){
+        System.out.println(importance[3]);
+
+        for (int i = 0; i < importance.length-1; i++) {
+            for (int j = 0; j < importance.length-i-1; j++) {
+                if (importance[j] > importance[j + 1]) {
                     temp = sorted[j];
                     sorted[j] = sorted[j + 1];
-                    sorted[j + 1] = temp;
+                    sorted[j+1] = temp;
                 }
             }
         }
+        System.out.println(sorted[0].transp);
         return sorted;
     }
     @Override

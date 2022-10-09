@@ -17,6 +17,7 @@ public class MappingController {
 
     @GetMapping("/compute/{start}/{end}/{canDrive}/{canWalk}/{isStudent}")
     public String compute(@PathVariable String start, @PathVariable String end, @PathVariable Boolean canDrive, @PathVariable Boolean canWalk, @PathVariable Boolean isStudent) {
+
         return studentService.getSolution(studentService.allRoute(start, end), canDrive, canWalk, isStudent);
     }
 }
