@@ -13,7 +13,39 @@ public class hackServiceImp implements hackService {
     @Override
     public ListNode[] allRoute(String start, String end){
 
-        return new ListNode[0];
+        ListNode[] route = new ListNode[3];
+        if (start.equals("Ohio Union") && end.equals("RPAC")){
+            route = new ListNode[3];
+            route[0] = new ListNode("drive", 3, 2);
+            route[1] = new ListNode("walk", 10, 0);
+            route[2] = new ListNode("walk", 11, 0);
+        } else if (start.equals("Ohio Union") && end.equals("Dreese Lab")) {
+            route = new ListNode[2];
+            route[0] = new ListNode("walk", 11, 0);
+            ListNode route_node = new ListNode("CABS", 5, 0);
+            route_node.next = new ListNode("walk", 11, 0);
+            route[1] = route_node;
+        } else if (start.equals("99P Labs") && end.equals("Dreese Lab")){
+            route = new ListNode[3];
+            route[0] = new ListNode("walk", 31, 0);
+            ListNode route_node_1 = new ListNode("COTA", 11, 2.5);
+            route_node_1.next = new ListNode("walk", 10, 0);
+            route[1] = route_node_1;
+            ListNode route_node_2 = new ListNode("CABS", 5, 0);
+            route_node_2.next = new ListNode("walk", 3, 0);
+            route[2] = route_node_2;
+        } else if (start.equals("99P Labs") && end.equals("RPAC")) {
+            route = new ListNode[3];
+            route[0] = new ListNode("walk", 31, 0);
+            ListNode route_node_1 = new ListNode("COTA", 11, 2.5);
+            route_node_1.next = new ListNode("walk", 10, 0);
+            route[1] = route_node_1;
+            ListNode route_node_2 = new ListNode("CABS", 17, 0);
+            route_node_2.next = new ListNode("walk", 6, 0);
+            route[2] = route_node_2;
+        }
+
+        return route;
     }
     @Override
     public ListNode[] getSolution(ListNode[] routes, boolean canDrive, boolean canWalk, boolean isStudent){
@@ -65,5 +97,6 @@ public class hackServiceImp implements hackService {
         }
         return sorted;
     }
+    // test
 
 }
