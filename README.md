@@ -4,4 +4,4 @@
 
 ## Pitch vidio: https://www.youtube.com/watch?v=po6wRDCea3E
 
-## Link to our website: go.osu.edu/hackO-3
+## Link to our website: https://go.osu.edu/hackO-3
